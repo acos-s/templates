@@ -15,5 +15,5 @@ nix flake init -t github:acos/templates#category.name
 *follows nix flake syntax*
 
 ```sh
-bash <(curl -s https://raw.githubusercontent.com/acos-s/templates/main/get-template.sh) github:acos/templates#category.name
+bash <(curl -s https://raw.githubusercontent.com/acos-s/templates/refs/heads/main/get-template.sh) github:acos-s/templates#category.name
 ```
