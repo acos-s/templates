@@ -6,11 +6,11 @@
     {
       templates = {
         roblox = {
-          "executors" = {
+          executors = {
             path = ./roblox/executors;
             description = "Executor script template";
           };
-          vue = {
+          studio = {
             path = ./roblox/studio;
             description = "Roblox studio template";
           };
