@@ -5,11 +5,11 @@
     { self }:
     {
       templates = {
-        "roblox.executors" = {
+        "roblox/executors" = {
           path = ./roblox/executors;
           description = "Executor script template";
         };
-        "roblox.studio" = {
+        "roblox/studio" = {
           path = ./roblox/studio;
           description = "Roblox studio template";
         };

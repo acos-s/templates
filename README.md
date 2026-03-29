@@ -7,7 +7,7 @@ My own templates with optional NixOS support, primarily only for myself and my f
 ### Nix
 
 ```nix
-nix flake init -t github:acos/templates#category.name
+nix flake init -t github:acos/templates#category/name
 ```
 
 ### Other systems
@@ -15,5 +15,5 @@ nix flake init -t github:acos/templates#category.name
 *follows nix flake syntax*
 
 ```sh
-bash <(curl -s https://raw.githubusercontent.com/acos-s/templates/refs/heads/main/get-template.sh) github:acos-s/templates#category.name
+bash <(curl -s https://raw.githubusercontent.com/acos-s/templates/refs/heads/main/get-template.sh) github:acos-s/templates#category/name
 ```

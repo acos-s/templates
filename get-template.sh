@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-input=${1:?Usage: get-template github:user/repo#path.to.template}
+input=${1:?Usage: get-template github:user/repo#path/to/template}
 repo_part=${input#github:}
 repo_url="https://github.com/${repo_part%%#*}.git"
 template_path=${repo_part#*#}
-template_path=${template_path//./\/}
 
 tmp_dir=$(mktemp -d)
 trap 'rm -rf "$tmp_dir"' EXIT
