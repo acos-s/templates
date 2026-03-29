@@ -1,0 +1,12 @@
+{
+    "luau-lsp.diagnostics.workspace": true,
+
+    "[luau]": {
+        "editor.defaultFormatter": "JohnnyMorganz.stylua"
+    },
+
+    "luau-lsp.ignoreGlobs": [
+        "*_packages/**",
+        ".pesde/**"
+    ]
+}

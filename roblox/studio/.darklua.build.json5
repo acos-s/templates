@@ -1,0 +1,80 @@
+// rather extreme minification. acts as a simple obfuscator too
+
+{
+    "process": [
+        {
+            // replaces all __DEV__ occurances in code with env value "ROBLOX_DEV"
+            // useful for testing in studio
+            "rule": "inject_global_value",
+            "identifier": "__DEV__",
+            "value": false
+        },
+
+        {
+            "rule": "convert_require",
+            "current": {
+                "name": "path",
+                "sources": {
+                    // in-case someone wants to add test code in the src folder
+                    "@devpkgs": "lune_packages/",
+                    "@pkgs": "roblox_packages/",
+                    "@src": "src/",
+                    "@shared": "src/shared",
+                    "@client": "src/client",
+                    "@server": "src/server"
+                }
+            },
+            "target": {
+                "name": "roblox",
+                "rojo_sourcemap": "sourcemap.json",
+                "indexing_style": "wait_for_child"
+            }
+        },
+
+        {
+            "rule": "rename_variables",
+            "include_functions": true
+        },
+
+        {
+            rule: "remove_comments",
+            except: [
+                "^--!"
+            ],
+        },
+
+        // pre-compute stuff like `1+1`
+        "compute_expression",
+
+        // `var["field"]` to `var.field`
+        "convert_index_to_field",
+
+        // `0b1000_0001` to `0x81`. not sure if it'll break anything
+        "convert_luau_number",
+
+        // https://darklua.com/docs/rules/filter_after_early_return/
+        "filter_after_early_return",
+
+        "group_local_assignment",
+
+        "remove_empty_do",
+
+        "remove_function_call_parens",
+
+        "remove_method_definition",
+
+        // `local var = nil` to `local var`
+        "remove_nil_declaration",
+
+        "remove_spaces",
+
+        "remove_types",
+
+        "remove_unused_if_branch",
+
+        "remove_unused_variable",
+
+        "remove_unused_while",
+
+    ]
+}

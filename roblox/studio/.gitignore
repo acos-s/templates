@@ -1,0 +1,8 @@
+.direnv/
+
+.pesde/
+*_packages/
+
+dist/
+**/*.rbx[lm]*
+sourcemap.json

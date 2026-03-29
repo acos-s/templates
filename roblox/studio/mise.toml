@@ -1,0 +1,8 @@
+[tools]
+"github:lune-org/lune" = "latest"
+"github:JohnnyMorganz/luau-lsp" = "latest"      # why not pinned? because I prefer to follow latest coding guidelines
+"github:seaofvoices/darklua" = "latest"
+"github:rojo-rbx/rojo" = "latest"
+"github:pesde-pkg/pesde" = "0.7.3"      # awaiting 0.8.X release
+stylua = "latest"
+just = "latest"

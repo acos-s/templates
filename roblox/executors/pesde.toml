@@ -1,0 +1,30 @@
+name = "acos/studio_template"
+version = "0.1.0"
+authors = ["acos"]
+license = "MIT"
+
+[target]
+environment = "roblox"
+
+[indices]
+default = "https://github.com/pesde-pkg/index"
+
+[wally_indices]
+default = "https://github.com/UpliftGames/wally-index"
+
+[scripts]
+roblox_sync_config_generator = ".pesde/scripts/roblox_sync_config_generator.luau"
+sourcemap_generator = ".pesde/scripts/sourcemap_generator.luau"
+
+[dev_dependencies]
+frktest = { name = "itsfrank/frktest", version = "^0.0.2", target = "lune" }
+scripts = { name = "pesde/scripts_rojo", version = "^0.2.0", target = "lune" }
+rojo = { name = "pesde/rojo", version = "^7.5.1", target = "lune" }
+
+[dependencies]
+# pesde example
+hello = { name = "pesde/hello", version = "^1.0.0" }
+# wally example
+# foo = { wally = "acme/package", version = "^1.0.0" }
+# git example
+# acme = { repo = "acme/package", rev = "aeff6" }

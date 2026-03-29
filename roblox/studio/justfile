@@ -1,0 +1,51 @@
+default:
+    @just --list
+
+# Build the place for production
+[group('serving & building')]
+build:
+    darklua process --config .darklua.build.json5 src/ dist/
+    rojo build build.project.json -o place.rbxl
+# Serve the dev build
+[group('serving & building')]
+serve:
+    rojo serve default.project.json \
+        & rojo sourcemap default.project.json -o sourcemap.json --watch \
+        & darklua process --config .darklua.dev.json5 --watch src/ dist/
+# Preview the production build
+[group('serving & building')]
+preview:
+    rojo serve build.project.json \
+        & rojo sourcemap default.project.json -o sourcemap.json --watch \
+        & darklua process --config .darklua.build.json5 --watch src/ dist/
+
+# Check if code is valid (run tests + lsp)
+[group('CI')]
+check: test analyze
+[group('CI')]
+analyze:
+    @echo "Downloading global types"
+    curl -s -O https://raw.githubusercontent.com/JohnnyMorganz/luau-lsp/main/scripts/globalTypes.d.lua > /dev/null
+    @echo "Generating sourcemap"
+    rojo sourcemap default.project.json -o sourcemap.json
+    @echo "Analyzing code"
+    -luau-lsp analyze --definitions=globalTypes.d.lua --base-luaurc=.luaurc \
+        --sourcemap=sourcemap.json --settings=.vscode/settings.json \
+        --no-strict-dm-types --ignore *_packages/**/*.lua --ignore *_packages/**/*.luau \
+        src/ && echo "Finished checking"
+    rm -rf globalTypes.d.lua
+[no-exit-message]
+[group('CI')]
+test *ARGS:
+    lune run .lune/test.luau "$@"
+
+# Install wally packages
+[group('misc')]
+install:
+    wally install
+    rm -rf packages
+    mv -f Packages/ packages/
+# Clean the build files
+[group('misc')]
+clean:
+    rm -rf dist/

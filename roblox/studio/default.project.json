@@ -1,0 +1,23 @@
+{
+  "name": "studio-template",
+  "emitLegacyScripts": false,
+  "tree": {
+    "$className": "DataModel",
+    "ReplicatedStorage": {
+      "shared": {
+        "$path": "src/shared"
+      },
+      "client": {
+        "$path": "src/client"
+      },
+      "packages": {
+        "$path": "roblox_packages"
+      }
+    },
+    "ServerScriptService": {
+      "server": {
+        "$path": "src/server"
+      }
+    }
+  }
+}

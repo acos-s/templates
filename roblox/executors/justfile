@@ -1,0 +1,14 @@
+# required for args processing
+set positional-arguments
+
+default:
+    @just --list
+
+[no-exit-message]
+test *ARGS:
+    lune run .lune/test.luau "$@"
+
+# serve:
+#     ...
+# bundle:
+#     ...
