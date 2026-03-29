@@ -5,23 +5,14 @@
     { self }:
     {
       templates = {
-        roblox = {
-          executors = {
-            path = ./roblox/executors;
-            description = "Executor script template";
-          };
-          studio = {
-            path = ./roblox/studio;
-            description = "Roblox studio template";
-          };
+        "roblox.executors" = {
+          path = ./roblox/executors;
+          description = "Executor script template";
+        };
+        "roblox.studio" = {
+          path = ./roblox/studio;
+          description = "Roblox studio template";
         };
       };
-
-      checks = builtins.mapAttrs (
-        category: templates:
-        builtins.mapAttrs (name: tmpl: {
-          templateExists = builtins.pathExists (tmpl.path);
-        }) templates
-      ) self.templates;
     };
 }
